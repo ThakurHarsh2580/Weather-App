@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="h-screen w-full dark overflow-y-hidden">
+
+    <div id="card-container" class="flex h-full items-center w-full justify-center">
+
+        <div id="card" class="weather-info gap-4 relative shrink-0 flex flex-col justify-between p-4 sm:p-7 w-[90%] h-135 sm:w-lg lg:w-xl bg-no-repeat bg-center bg-cover bg-[url('./assets/bg.jpg')] rounded-xl">
+            <div id="search-box" class="search-box z-10 flex items-center justify-center gap-4 *:p-3 *:outline-none *:rounded rounded-lg outline-none">
+                <input 
+                    spellcheck="false"
+                    type="text" 
+                    id="locationInput"
+                    placeholder="Search by city name..." 
+                    class="search-input bg-white/10 backdrop-blur-sm"
+                >
+                <button id="searchBtn" class="bg-white/20 backdrop-blur-sm cursor-pointer hover:bg-blue-400 transition duration-200">Search</button>
+            </div>
+            <div id="img-overlay" class="absolute inset-0 bg-black/25 rounded-lg"></div>
+
+            <!--Data Storing Container--> 
+            <div id="data-container" class="flex-col gap-5 mt-4 hidden z-50">
+                <div id="city-container" class="text-2xl sm:text-3xl lg:text-4xl text-white">
+                    <div class="flex items-center w-fit rounded-2xl gap-2">
+                        <div id="location-name">Singanpur</div>
+                        <img class="size-6" src="./graphics/location.svg" alt="">
+                    </div>
+                </div>
+
+
+                <div id="temperature-container" class="flex justify-between">
+                    <div id="diaplay-left" class="flex flex-col items-center justify-center">
+                        <div class="flex font-semibold">
+                            <div id="temperature" class="text-8xl w-fit">32</div>
+                            <div class="text-2xl pt-2">°C</div>
+                        </div>
+                        <p id="feels-like" class="font-light">Feels like 34°C</p>
+                    </div>
+
+                    <div id="display-right" class="flex flex-col w-30 sm:w-40 items-center justify-center">
+                        <img id="weather-type-img" class="size-24 sm:size-30" src="./assets/atmosphere.svg" alt="">
+                        <p id="weather-type" class="text-center">Mostly Cloudy</p>
+                    </div>
+                </div>
+
+                <div id="info" class="justify-between z-10">
+                    <p id="uv-index" class="font-light">UV Index : High</p>
+                    <p id="aqi" class="font-light">Air Quality : Poor</p>
+                </div>
+
+
+                <div class="info-cards flex gap-4 mt-5 justify-around">
+
+                    <div class="info-card text-center">
+                        <img class="w-10 h-10 mx-auto" src="./graphics/drop.svg">
+                        <h2 class="font-light">Humidity</h2>
+                        <h2 id="humidity-percent">32%</h2>
+                    </div>
+
+                    <div class="info-card text-center">
+                        <img class="w-10 h-10 mx-auto" src="./graphics/wind.svg">
+                        <h2 class="font-light">Wind</h2>
+                        <h2 id="wind-speed">8 Km/h</h2>
+                    </div>
+
+                    <div class="info-card text-center">
+                        <img class="w-10 h-10 mx-auto" src="./graphics/rain.svg">
+                        <h2 class="font-light">Rain</h2>
+                        <h2 id="precipitation-percent">10%</h2>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="loading" class="hidden h-92 flex justify-center items-center mt-5">
+                <div class="w-10 h-10 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+
+            <div id="search-city-container" class="mt-5 flex flex-col items-center text-center">
+                <img class="size-89" src="./assets/search-city.png" alt="">
+                <h1 class="text-2xl text-center">Search City Name.</h1>
+            </div>
+
+            <div id="result-not-found" class="mt-5 flex flex-col items-center text-center hidden">
+                <img class="size-89" src="./assets/not-found.png" alt="">
+                <h1 class="text-2xl text-center">Result Not Found.</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- 775655a88c464b188f2114424260604 -->
+ <!-- https://api.weatherapi.com/v1/current.json?key=775655a88c464b188f2114424260604&q=London&aqi=yes -->

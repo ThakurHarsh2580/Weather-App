@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Trispace:wdth,wght@87.5,100..800&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: "Trispace", sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Dark Slate Background */
+    background-color: #0f172a; 
+    /* The "Cheque" Pattern */
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 30px 30px; /* Adjust this to make the squares bigger/smaller */
+  }
+
+  body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Creates a glow in the center that fades to black at the edges */
+  background: radial-gradient(circle at center, rgba(30, 41, 59, 0) 0%, #060606 100%);
+  z-index: -1;
+}
+}
+
+@layer components {
+  .dark {
+    @apply bg-gray-950 text-white;
+  }
+
+  .info-card {
+    @apply w-22 sm:w-28 sm:px-2 flex flex-col bg-white/10 backdrop-blur-xs rounded-md py-4 items-center justify-center;
+  }
+  .info-card:hover {
+    transform: translateY(-4px);
+    transition: 0.2s ease;
+  }
+}  
+
+@layer utilities {
+  .weather-card {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
